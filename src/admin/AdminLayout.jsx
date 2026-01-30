@@ -4,7 +4,7 @@ const AdminLayout = () => {
   return (
     <div className="min-h-screen flex bg-gray-100">
       
-      {/* Sidebar */}
+     
       <aside className="w-64 bg-white shadow-md">
         <h2 className="text-xl font-bold text-center py-4 border-b">
           Admin Panel
@@ -53,7 +53,7 @@ const AdminLayout = () => {
         </nav>
       </aside>
 
-      {/* Main content */}
+  
       <main className="flex-1 p-6">
         <Outlet />
       </main>

@@ -16,7 +16,7 @@ const currentUser = useSelector(state => state.auth.currentUser);
 
   return (
     <div>
-      {/* Header */}
+      
       <div className="mb-6">
         <h1 className="text-2xl font-bold">
           Admin Dashboard
@@ -26,14 +26,14 @@ const currentUser = useSelector(state => state.auth.currentUser);
         </p>
       </div>
 
-      {/* Stats */}
+   
       <div className="grid md:grid-cols-3 gap-6">
         <StatCard title="Total Products" value={products.length} />
         <StatCard title="Total Orders" value={orders.length} />
         <StatCard title="Total Users" value={users.length} />
       </div>
 
-      {/* Order Status Summary */}
+
       <div className="mt-8 bg-white p-6 rounded-lg shadow">
         <h2 className="text-lg font-bold mb-4">Order Status</h2>
 

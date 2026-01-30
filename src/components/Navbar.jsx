@@ -10,12 +10,11 @@ const Navbar = () => {
     <nav className="bg-white border-b sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         
-        {/* Logo */}
+       
         <Link to="/" className="text-xl font-bold text-blue-600">
           ReactMart
         </Link>
 
-        {/* Links */}
         <div className="flex items-center gap-5 text-sm font-medium">
           {!currentUser && (
             <>

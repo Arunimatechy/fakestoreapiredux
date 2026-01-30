@@ -1,16 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/* ================= LOCALSTORAGE KEYS ================= */
+const USERS_KEY = "loginUsers";       // old "users" renamed
+const CURRENT_USER_KEY = "currentUser"; // keep as is
+
+/* ================= HELPER FUNCTIONS ================= */
 const getUsers = () =>
-  JSON.parse(localStorage.getItem("users")) || [];
+  JSON.parse(localStorage.getItem(USERS_KEY)) || [];
 
 const getCurrentUser = () =>
-  JSON.parse(localStorage.getItem("currentUser"));
+  JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
 
+/* ================= INITIAL STATE ================= */
 const initialState = {
   users: getUsers(),
   currentUser: getCurrentUser(),
 };
 
+/* ================= SLICE ================= */
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -24,11 +31,11 @@ const authSlice = createSlice({
       const newUser = {
         id: Date.now(),
         ...action.payload,
-        isAdmin: state.users.length === 0, // ⭐ first user admin
+        isAdmin: state.users.length === 0, // first user is admin
       };
 
       state.users.push(newUser);
-      localStorage.setItem("users", JSON.stringify(state.users));
+      localStorage.setItem(USERS_KEY, JSON.stringify(state.users));
     },
 
     login: (state, action) => {
@@ -41,15 +48,16 @@ const authSlice = createSlice({
       if (!user) return;
 
       state.currentUser = user;
-      localStorage.setItem("currentUser", JSON.stringify(user));
+      localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
     },
 
     logout: (state) => {
       state.currentUser = null;
-      localStorage.removeItem("currentUser");
+      localStorage.removeItem(CURRENT_USER_KEY);
     },
   },
 });
 
+/* ================= EXPORTS ================= */
 export const { register, login, logout } = authSlice.actions;
 export default authSlice.reducer;
